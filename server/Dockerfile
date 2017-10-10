@@ -7,6 +7,6 @@ RUN cd /server && npm i
 WORKDIR /server
 EXPOSE 3000
 
-CMD ["/usr/local/bin/npm run start"]
+CMD ["/usr/local/bin/npm","run","start"]
 
 
