@@ -1,6 +1,7 @@
 <template>
   <div class = "vtable">
     <Table 
+      :loading="loading"
       :columns="columns" 
       :data="data"
       :size="size"
@@ -31,22 +32,20 @@ export default {
   name: 'vtable',
   data () {
     return {
+      loading:true,
       data:[],
       total:100,//数据总数
       totalPage:4,
       currentPage:1
     }
   },
-  watch:{
-    page:function(){
-      let self = this
-      api.get(self.url,{page:self.page,count:self.count})
-        .then((data)=>{
-          console.log(data)
-        })
-    }
-  },
   props: {
+    params:{
+      type:Object,
+      default(){
+        return {}
+      }
+    },
     url:{
       type:String,
       default(){
@@ -127,13 +126,24 @@ export default {
   methods:{
     refresh(){ //刷新
       let self = this
-      api.get(self.url,{page:self.currentPage,pageSize:self.count})
+      self.loading = true;
+      self.params.page = self.currentPage
+      self.pageSize = self.count
+      api.get(self.url,self.params)
         .then((data)=>{
-          console.log(data)
           self.data = data.data
           self.totalPage= data.count
           self.currentPage = data.page
           self.total = data.count
+          self.loading = false;
+        })
+        .catch((err)=>{
+          if(err == 'TypeError: Failed to fetch'){
+            self.$Message.error({
+              content:'从服务器加载数据失败,请联系管理员!',
+              duration:5
+            })
+          }
         })
     },
     pagechange(page){

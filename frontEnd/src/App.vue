@@ -2,23 +2,17 @@
   <div id="app" class="layout">
     <mheader></mheader>
     <div class="layout-breadcrumb">
-      <Breadcrumb>
-        <BreadcrumbItem href="#"><router-link to="/">首页</router-link></BreadcrumbItem>
-        <BreadcrumbItem href="#">应用中心</BreadcrumbItem>
-        <BreadcrumbItem>某应用</BreadcrumbItem>
-      </Breadcrumb>
     </div>
     <div class="layout-content">
       <router-view></router-view>
     </div>
-    <div class="layout-copy">
-      2011-2016 &copy; Rainboy
-    </div>
+    <mfooter></mfooter>
   </div>
 </template>
 
 <script>
 import mheader from './components/header.vue'
+import mfooter from './components/footer.vue'
 export default {
   name: 'app',
   data () {
@@ -27,7 +21,8 @@ export default {
     }
   },
   components:{
-    mheader
+    mheader,
+    mfooter
   }
 }
 </script>
@@ -35,21 +30,6 @@ export default {
 <style>
 .layout{
   border: 1px solid #d7dde4;
-}
-.layout-logo{
-  background: #5b6270;
-  border-radius: 3px;
-  float: left;
-  position: relative;
-  left: 20px;
-  font-weight:bolder;
-  font-size:20px;
-  color:#fff;
-  padding:0 20px;
-}
-.layout-nav{
-  width: 420px;
-  margin: 0 auto;
 }
 .layout-assistant{
   width: 300px;
@@ -59,8 +39,8 @@ export default {
 .layout-breadcrumb{
   margin:15px auto;
   padding: 10px 15px 0;
-  background:#fff;
-  border:1px solid #eee;
+  //background:#fff;
+  //border:1px solid #eee;
 }
 .layout-content{
   min-height: 500px;
@@ -73,11 +53,6 @@ export default {
 }
 .layout-content-main{
   padding: 10px;
-}
-.layout-copy{
-  text-align: center;
-  padding: 10px 0 20px;
-  color: #9ea7b4;
 }
 body {
   background: url('./assets/bk.png');

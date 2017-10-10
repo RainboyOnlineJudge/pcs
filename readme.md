@@ -5,6 +5,31 @@
 
 ## 安装
 
+
+### 安装mongodb docker
+
+```
+cd docker
+docker build -t mongodb_server .
+docker run --name=pcsdb -d -P mongdb_server
+```
+
+修改`jwt_key`
+```
+vim server/config.js
+
+{
+    'jwt_key':your_key
+}
+```
+
+创建server-docker
+```
+cd server
+docker built -t pcs_server .
+docker run --name=pcs_server --link=pcsdb -d -p <port>:3000 -v <image_path>:/server/images/ pcs_server
+```
+
 ### 安装后台server
 
 首先安装`docker`,参考阿里云的docker[安装方法](https://yq.aliyun.com/articles/29941)

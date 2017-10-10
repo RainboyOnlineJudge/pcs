@@ -21,20 +21,24 @@ router.get('/',async function(req, res, next) {
     debug( req.query.tags)
     let tags = []
     tags.push( req.query.tags)
-    console.log(tags)
     debug("tags:",tags)
     query  = query.where("tags").in(tags)
     query_data.tags = {"$in":tags}
   }
 
-
-  if(req.query.category){
-    let category = []
-    category.push(req.query.category)
-    debug("category:",category)
-    query  = query.where('category').in(category)
-    query_data.category = {"$in":category}
+  if( req.query.author){
+    debug('query author:',req.query.author)
+    query_data.author = req.query.author
+    query = query.where('author').equals(req.query.author)
   }
+
+  if( req.query.title){
+    debug('query title:',req.query.title)
+    let title = req.query.title
+    query_data.title = {"$regex":title,"$options":"si"}
+    query = query.where({title:{"$regex":title,"$options":"si"}})
+  }
+
 
   let sort = "-update"
   if(req.query.sort == '1'){
@@ -47,7 +51,7 @@ router.get('/',async function(req, res, next) {
 
   let skip= Math.ceil(page-1)*pageSize
   let limit = pageSize
-  let data = await query.skip(skip).limit(limit).select("-content")
+  let data = await query.sort(sort).skip(skip).limit(limit).select("-content")
 
   res.json({
     page:page,

@@ -42,6 +42,7 @@ export default {
         self.author = data.doc.author
           self.markdown = self.markdown_render(self.content)
           self.$nextTick(prettyPrint)  //代码高亮
+        self.$nextTick(self.gotoTop)
       })
     }
   },
