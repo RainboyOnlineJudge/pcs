@@ -11,7 +11,7 @@
 ```
 cd docker
 docker build -t mongodb_server .
-docker run --name=pcsdb -d -P mongdb_server
+docker run --name=pcsdb -d -P mongodb_server
 ```
 
 修改`jwt_key`
@@ -26,7 +26,7 @@ vim server/config.js
 创建server-docker
 ```
 cd server
-docker built -t pcs_server .
+docker build -t pcs_server .
 docker run --name=pcs_server --link=pcsdb -d -p <port>:3000 -v <image_path>:/server/images/ pcs_server
 ```
 
