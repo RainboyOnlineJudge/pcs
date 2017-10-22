@@ -44,7 +44,7 @@ export default {
 }
 .layout-content{
   min-height: 500px;
-  max-width:850px;
+  max-width:1024px;
   margin: 0 auto;
   overflow: hidden;
   background: #fff;

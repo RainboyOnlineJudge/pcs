@@ -65,11 +65,13 @@ export default {
           title:'标题',
           align:'center',
           render:function(h,params){
-            return h('router-link',{
+            let link = h('router-link',{
               props:{
                 to:'/article/'+params.row._id
               }
             },params.row.title)
+
+            return h('p',[link])
           }
         },
         {
