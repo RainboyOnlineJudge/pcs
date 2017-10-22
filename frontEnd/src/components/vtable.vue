@@ -128,7 +128,7 @@ export default {
       let self = this
       self.loading = true;
       self.params.page = self.currentPage
-      self.pageSize = self.count
+      self.params.pageSize = self.count
       api.get(self.url,self.params)
         .then((data)=>{
           self.data = data.data

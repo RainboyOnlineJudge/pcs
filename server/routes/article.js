@@ -104,7 +104,7 @@ router.get('/opt/ta',async function(req,res,next){
 
 router.post('/opt/upload',verifyToken,async function(req, res, next) {
   let body = req.body
-  body.author = req.author || 'unkown'
+  body.author = body.author || 'unkown'
 
   if( body._id == null || body._id == undefined) // 未定义_id的时候
     body._id = gen_id()

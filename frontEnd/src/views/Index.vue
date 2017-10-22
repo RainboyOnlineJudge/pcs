@@ -53,7 +53,7 @@ export default {
         title:'',
         author:'',
       },
-      count:25,
+      count:10,
       page:1,
       columns:[
         {
