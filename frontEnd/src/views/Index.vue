@@ -53,7 +53,7 @@ export default {
         title:'',
         author:'',
       },
-      count:10,
+      count:50,
       page:1,
       columns:[
         {
@@ -85,11 +85,11 @@ export default {
           align:'center',
           render:function(h,params){
             let tags = []
-            for(let i = 0;i < params.row.tags.length && i < 3;i++)
+            for(let i = 0;i < params.row.tags.length && i <= 3;i++)
               tags.push(h('Tag',params.row.tags[i]));
             if( params.row.tags.length > 3){
               tags.pop()
-              let more_tags = params.row.tags.slice(2).join(',')
+              let more_tags = params.row.tags.slice(3).join(',')
               let tip = h('Tooltip',{
                 props:{
                   content:more_tags,
