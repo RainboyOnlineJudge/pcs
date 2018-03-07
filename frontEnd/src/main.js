@@ -22,7 +22,6 @@ Vue.prototype.gotoTop = function(){
   scrollTo(0,0);
 }
 
-
 new Vue({
   el: '#app',
   router,
