@@ -1,5 +1,5 @@
 //配置
-var addr = process.env.NODE_ENV === 'production' ? 'pcsdb' : 'localhost'
+var addr = process.env.NODE_ENV === 'production' ? 'localhost' : 'localhost'
 module.exports ={
   "DB":{
     addr:"mongodb://"+addr+"/pcs",

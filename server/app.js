@@ -10,7 +10,11 @@ var cors = require('cors')
 var app = express();
 
 // enable all cors
-app.use(cors())
+//app.use(cors())
+
+// 网页
+// 
+app.use(express.static("../frontEnd/dist"))
 
 
 // uncomment after placing your favicon in /public
