@@ -34,7 +34,7 @@ function is_argv_right(){
   if(argv._.length !=0)
     return false;
 
-  if(argv.u == undefined)
+  if(argv.u == undefined && argv == undefined)
     return false;
 
   return true;
@@ -85,12 +85,21 @@ async function upload(){
 
 // 图片上传
 async function image_upload(){
-  if( argv.i &&argv.i.length === 0) // 全体上传
-  {
-
+  if( argv.i.length == 0){
+    console.log("-i,--images 没有参数")
+    return 
   }
-  else if(argv.i){ // 单个上传
+  if(argv.i){ // 单个上传
+    for(let i = 0 ;i < argv.i.length;i++){
+      let image = argv.i[i]
+      let image_path 
 
+      if (image[0] == '/') //绝对路径
+        image_path = image
+      else
+        image_path = pathFn.join(process.cwd(),image.toString())
+      __image_upload(image_path)
+    }
   }
 }
 
@@ -117,5 +126,16 @@ async function __upload(file_path){
   }
   else
     throw Error("文章不存在: "+file_path)
+}
+
+async function __image_upload(image_path){
+  if (fs.existsSync (image_path) )
+  {
+    await api.image_post(image_path)
+    console.log('图片上传成功:',image_path)
+  }
+  else
+    throw Error("图片不存在: "+image_path)
+
 }
 

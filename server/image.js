@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs')
 module.exports =function(req,res,next){
   let options = {
-    root: __dirname + '/images/',
+    root: C.images_path,
     dotfiles: 'deny',
     headers: {
         'x-timestamp': Date.now(),
@@ -11,8 +11,7 @@ module.exports =function(req,res,next){
   };
   let name  = req.params.name
 
-  let image_base_path = path.join(__dirname,'images')
-  let image_path = path.join(image_base_path,name)
+  let image_path = path.join(options.root,name)
   if(! fs.existsSync(image_path))
     name = '404.jpg'
 

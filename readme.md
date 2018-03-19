@@ -1,19 +1,73 @@
+# pcs
 
-## blog2
-
-基于vue2.0的,对上一个基于vue1.0的版本,加上好用的iview组件库写给**Rainboy**自己用的Blog
-
-## 安装
+一个在线题解系统
 
 
-### 安装mongodb docker
+ - [一.安装]()
+    - [1.手动安装]()
+    - [2.使用docker]()
 
+
+## 一.安装
+
+### 1.手动安装
+
+下载`nodejs 8.10.0 LTS`
+
+```sh
+wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-x64.tar.xz
 ```
-cd docker
-docker build -t mongodb_server .
-docker run --name=pcsdb -d -P mongodb_server
+
+安装
+
+```sh
+tar -xvf node-v8.10.0-linux-x64.tar.xz
+mv node-v8.10.0-linux-x64.tar.xz node
+mkdir ~/.bin
+mv node ~/.bin
+
+cat << EOF >> ~/.bashrc
+# node path
+export NODE_HOME=~/.bin/node
+export PATH=$PATH:$NODE_HOME/bin
+export NODE_PATH=$NODE_HOME/lib/node_modules
+EOF
+source ~/.bashrc
 ```
 
+使用cnpm
+
+```sh
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
+### 安装 server 端
+
+```bash
+cd pcs/server
+cnpm i 
+```
+
+确定`images`路径
+
+```bash
+cp -r server/images your_path
+```
+**修改server/config.js**
+
+
+```json
+images_path:your_path+"/images", //images路径的地址
+"jwt_key":'your_token'  //jwt 的key
+```
+
+运行` npm run start`
+
+### 安装 frontEnd 端
+
+### 安装mongodb
+
+## 配置
 修改`jwt_key`
 ```
 vim server/config.js
@@ -107,6 +161,5 @@ category
 ```
 rb -u atirle1 article2 article3
 rb -u //遍历base_dir下的所有md文件,然后提交
-rb -i image1 image2 
-rb -i 
+rb -i image_path1 image_path2 image_path3 ..
 ```

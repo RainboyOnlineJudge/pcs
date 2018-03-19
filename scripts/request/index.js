@@ -5,3 +5,4 @@ async function post_article(data){
 }
 
 exports.post_article = post_article
+exports.image_post = base.image_post

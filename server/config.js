@@ -8,5 +8,6 @@ module.exports ={
     }
   },
   port:3000,//端口
+  images_path:__dirname+"/images", //images路径的地址
   "jwt_key":'mytoken'  //jwt 的key
 }
