@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node ./bin/www",
+    "start:nohup": "NODE_ENV=production nohup node ./bin/www >/dev/null &",
     "debug": "NODE_ENV=development DEBUG=debug node ./bin/www"
   },
   "dependencies": {
