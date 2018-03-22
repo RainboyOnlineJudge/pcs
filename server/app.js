@@ -2,12 +2,14 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var compression = require('compression')
 
 var cors = require('cors')
 
 
-
 var app = express();
+// 启用gzip
+app.use(compression());
 
 // enable all cors
 //app.use(cors())
