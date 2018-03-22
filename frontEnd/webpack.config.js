@@ -9,6 +9,7 @@ module.exports = {
     iview:"iview",
     vue:"Vue",
     "highlight.js":"hljs",
+    katex:"katex"
   },
   output: {
     path: path.resolve(__dirname, './dist'),
