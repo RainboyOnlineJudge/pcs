@@ -2,7 +2,8 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var compression = require('compression')
+var compression = require('compression');
+var favicon = require("serve-favicon");
 
 
 
@@ -11,19 +12,12 @@ var app = express();
 // 启用gzip
 app.use(compression());
 
-// 开启跨域
-if(process.env.DEBUG == "debug"){
-  var cors = require('cors')
-  app.use(cors())
-}
-
 // 网页
-// 
 app.use(express.static("../frontEnd/dist"))
 
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//  加入favicon 功能
+app.use(favicon(path.join(__dirname, '../frontEnd/static', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,18 +32,11 @@ global.M ={}
 require('./models/except/index.js')
 
 
-// 处理跨域
-app.all('*', corsConfig)
-function corsConfig (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Credentials', true)
-  res.header('Access-Control-Allow-Headers', 'token,Content-Type,Content-Length,Authorization, Access,X-Requested-With')
-  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,PATCH,OPTIONS')
-  if (res.method === 'OPTIONS') {
-    res.send(200)
-  } else {
-    next()
-  }
+// 开启跨域
+if(process.env.DEBUG == "debug"){
+  debug("开启跨域!")
+  var cors = require('cors')
+  app.use(cors())
 }
 
 

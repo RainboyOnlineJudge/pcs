@@ -5,6 +5,6 @@ exclude:
   - ._evil
   - readme.md
   - _drafts
-server_url: http://localhost:3000
-#server_url: http://pcs.rainboy.cc
+#server_url: http://localhost:3000
+server_url: http://pcs.rainboy.cc
 key: mytoken

@@ -78,7 +78,6 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     }),
     new HtmlWebpackPlugin({
-      favicon:'./src/assets/favicon.ico',
       title:'pcs系统',
       template:'__index.html',
       inject:'false',
