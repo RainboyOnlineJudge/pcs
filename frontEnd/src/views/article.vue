@@ -39,10 +39,9 @@ export default {
           self.title = data.doc.title
           self.tags = data.doc.tags
           self.visited = data.doc.visits
-        self.author = data.doc.author
+          self.author = data.doc.author
           self.markdown = self.markdown_render(self.content)
-          self.$nextTick(prettyPrint)  //代码高亮
-        self.$nextTick(self.gotoTop)
+          self.$nextTick(self.gotoTop)
       })
     }
   },
