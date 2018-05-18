@@ -5,6 +5,12 @@
       SCYZ-Noi-pcs
     </div>
     <div class="layout-nav">
+      <MenuItem name="post">
+      <router-link :to="{name:'Post'}">
+        <Icon type="upload"></Icon>
+        上传文章
+      </router-link>
+      </MenuItem>
       <MenuItem name="1">
       <Icon type="ios-information"></Icon>
       关于

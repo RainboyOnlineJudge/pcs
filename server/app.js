@@ -31,6 +31,9 @@ global.verifyToken = require('./verifyToken.js')
 global.M ={}
 require('./models/except/index.js')
 
+/* 检查是是否存在默认账号 */
+require('./check_defalut_user.js')
+
 
 // 开启跨域
 if(process.env.DEBUG == "debug"){
@@ -42,6 +45,7 @@ if(process.env.DEBUG == "debug"){
 
 app.use('/', require('./routes/index.js'));
 app.use('/article', require('./routes/article.js'));
+app.use('/login', require('./routes/login.js'));
 app.use('/image', require('./routes/image.js'));
 
 // catch 404 and forward to error handler
