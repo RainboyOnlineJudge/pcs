@@ -83,10 +83,10 @@ if (process.env.NODE_ENV === 'production') {
     new HtmlWebpackPlugin({
       title:'pcs系统',
       template:'__index.html',
-      inject:'false',
+      inject:true,
     }),
     new CopyWebpackPlugin([
-      { from:'./static/loading.css' }
+      { from:'./static/loading.css',to:'static/loading.css' }
     ])
   ])
 }
