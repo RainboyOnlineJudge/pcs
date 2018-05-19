@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    <h1 class="title">题解上传:&nbsp;&nbsp;  ┬—┬ ノ( ' - 'ノ) （摆好摆好）</h1>
     <div class="config-items">
       <ul>
         <li> 
@@ -9,15 +11,22 @@
         </li>
 
         <li> 
-          <Input v-model="data.author" number>
+          <Input v-model="data.author">
             <span slot="prepend">作者</span>
           </Input>
         </li>
+        <li> 
+          <Input v-model="data.oj">
+            <span slot="prepend">题目所在的OJ</span>
+          </Input>
+        </li>
 
-        <li class="problem-tags-li"> 
+        <br>
+
+        <li class="problem-tags-li" style="width:100%;"> 
           <div class="ivu-input-wrapper ivu-input-type ivu-input-group ivu-input-group-with-prepend">
             <div class="ivu-input-group-prepend" style="">
-              <span>标签</span></div>
+              <span>标签(输入后按回车)</span></div>
             <i class="ivu-icon ivu-icon-load-c ivu-load-loop ivu-input-icon ivu-input-icon-validate"></i>
             <input-tag :tags.sync="data.tags"></input-tag>
           </div>
@@ -68,6 +77,7 @@ export default {
       configs:{},
       data:{
         title:'',
+        oj:'',
         tags:[],
         author:'',
         content:"## 解析 \n\n\n\n 行内公式:$$a+n=1$$ \n\n  多行公式:\n ```math\na=+1\n``` \n## 代码\n\n\n```c\n这里写代码\n```",
@@ -128,6 +138,7 @@ export default {
   width:400px;
 }
 
+
 .problem-tags-li input {
   display: table-cell;
   width: 100%;
@@ -146,5 +157,14 @@ export default {
 }
 .tags button{
   margin:3px;
+}
+
+.title {
+  text-align:center;
+  font-size:30px;
+  margin:20px 0;
+  color: #ccc !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 !important;
 }
 </style>

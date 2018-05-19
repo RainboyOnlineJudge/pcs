@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <h1>题解列表</h1>
+    <h1>题解列表:&nbsp;&nbsp;（╯ﾟ▽ﾟ)╯（ ┻━┻ (掀桌子)</h1>
     <div class="option">
 
       <div class="item">
@@ -166,8 +166,8 @@ export default {
   margin-bottom:20px;
   text-align:center;
   font-size:30px;
-  color: #ddd;
-  letter-spacing: 0;
-  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 
+  color: #ddd !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 !important;
 }
 </style>
