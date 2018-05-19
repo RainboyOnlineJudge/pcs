@@ -91,8 +91,8 @@ export default {
       }
     },
     submit(){
-      if( this.data.title == ''){
-        this.$Notice.error({title:"必需填写标题!"})
+      if( this.data.title == '' || this.data.author.length == 0 || this.data.content.length == 0 ){
+        this.$Notice.error({title:"标题,作者,内容不能为空!!"})
         return;
       }
       api.upload(this.data).then((data)=>{
